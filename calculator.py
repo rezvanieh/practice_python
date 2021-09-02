@@ -1,33 +1,31 @@
-def operation(num1 , num2 , op):
-    result = 0
-    if op == 1:
-        result = num1 + num2
-        print("{} + {} = {}".format(num1 , num2, result))
-    elif op == 2:
-        result = num1 * num2
-        print("{} * {} = {}".format(num1 , num2, result))
-    elif op == 3:
-        try :        
-           result = num1 / num2
-           print("{} / {} = {}".format(num1 , num2, result))
-        except ZeroDivisionError:
-            print("Oops!  division by zero.  Try again...")                                    
-        
-    elif op == 4 :
-        result = num2 - num1
-        print("{} - {} = {}".format(num2 , num1, result))
+def add(x , y):
+    return x + y
 
+def multiply(x , y):
+    return x * y
+
+def divide(x , y):
+    try:
+        result = x / y
+    except ZeroDivisionError:
+        result = "Error..."
+        print("Oops!  division by zero.  Try again...")
     return result
 
-print("Please choice operation form list below( zero to Exit)")
-op = 1
-while True:
-    print(""" 1. Add
-            2. Multiplication
-            3. Divition
-            4. Sub
-            0. Exit
+def subtract(x , y):
+    return x - y
+
+
+
+print("Choice operation(Zero to Exit): ")
+print(""" 1. Add
+              2. Multiply
+              3. Divide
+              4. Subtract
+              0. Exit
         """)
+ 
+while True:   
     try :
         op = int(input("Operation: "))
     
@@ -36,10 +34,19 @@ while True:
         elif op in range(1,5):
             num1 = int(input("Number1: "))
             num2 = int(input("Number2: "))
-            operation(num1 , num2 , op)
+
+            if op == 1 :
+                print("{} + {} = {}".format(num1 , num2 , add(num1 , num2)))
+            elif op == 2:
+                print("{} * {} = {}".format(num1 , num2 , multiply(num1 , num2)))
+            elif op == 3:
+                result =  divide(num1 , num2)
+                print("{} / {} = {}".format(num1 , num2 ,result))
+            elif op == 4:
+                print("{} - {} = {}".format(num1 , num2 , subtract(num1 , num2)))
         else :
-            print("Oops!  That was no valid number.  Try again..")
-            
+            print("Oops!  That was no valid number.  Try again...")
+
     except ValueError:
         print("Oops!  That was no valid number.  Try again...")
 
